@@ -18,7 +18,7 @@ node_js:
 script:
   - yarn test
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+#  - npm run travis-deploy-once "npm run semantic-release"
 branches:
   only:
     - master
