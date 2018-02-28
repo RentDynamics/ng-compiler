@@ -33,8 +33,14 @@ jobs:
       - image: circleci/node:9.3.0
       # - image: mongo:3.4.4
     steps:
-      - checkout
-      # run tests!
+      - test
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
       - run: yarn test
 
       - store_artifacts:
@@ -47,13 +53,23 @@ jobs:
       # - image: mongo:3.4.4
     steps:
       - deploy
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
       - run: yarn build
       - run: yarn semantic-release || true
 workflows:
   version: 2
   build_test_and_deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+                - dev
       - test:
           requires:
             - build
@@ -64,6 +80,7 @@ workflows:
                 - dev
       - deploy:
           requires:
+            - build
             - test
           filters:
             branches:
