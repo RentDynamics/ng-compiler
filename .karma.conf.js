@@ -81,24 +81,24 @@ module.exports = function (config) {
         { type: 'lcov', subdir: 'report-lcov' },
         // reporters supporting the `file` property, use `subdir` to directly
         // output them in the `dir` directory
-        { type: 'cobertura', subdir: '.', file: 'cobertura.txt' },
-        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' },
-        { type: 'teamcity', subdir: '.', file: 'teamcity.txt' },
-        { type: 'text', subdir: '.', file: 'text.txt' },
+        { type: 'cobertura', subdir: '.', file: 'cobertura.xml' },
+        { type: 'lcovonly', subdir: '.', file: 'coverage.lcov' },
+        // { type: 'teamcity', subdir: '.', file: 'teamcity.txt' },
+        // { type: 'text', subdir: '.', file: 'text.txt' },
         { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
       ],
       watermarks: {
-        statements: [50, 75],
-        functions: [50, 75],
-        branches: [50, 75],
-        lines: [50, 75]
+        statements: [70, 75],
+        functions: [70, 75],
+        branches: [70, 75],
+        lines: [70, 75]
       }
     },
 
     // the default configuration
     junitReporter: {
       outputDir: 'dist/reports/junit', // results will be saved as $outputDir/$browserName.xml
-      outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile
+      outputFile: 'junit.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: '@rd/compiler', // suite will become the package name attribute in xml testsuite element
       useBrowserName: false, // add browser name to report and classes names
       nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
