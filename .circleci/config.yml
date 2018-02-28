@@ -47,12 +47,29 @@ jobs:
 
       - run: yarn test
 
-      - store_test_results:
-          path: dist/reports/junit/TESTS.xml
+      - store_artifacts:
+          path: dist/reports/coverage/report-html
+          prefix: coverage-html
 
       - store_artifacts:
-          path: dist/reports/coverage
-          prefix: coverage
+          path: dist/reports/coverage/report-lcov
+          prefix: coverage-lcov
+
+      - store_artifacts:
+          path: dist/reports/coverage/report-lcovonly.txt
+          prefix: coverage.lcov
+
+      - store_artifacts:
+          path: dist/reports/coverage/cobertura.txt
+          prefix: cobertura.xml
+
+      - store_artifacts:
+          path: dist/reports/coverage/text-summary.txt
+          prefix: text-summary.txt
+
+      - store_artifacts:
+          path: dist/reports/junit/TESTS.xml
+          prefix: junit.xml
  
   deploy:
     working_directory: ~/ng-compiler
