@@ -47,11 +47,14 @@ jobs:
 
       - run: yarn test
 
-      - store_test_results:
-          path: dist/reports/junit/junit.xml
-
       - store_artifacts:
           path: dist/reports/coverage/
+
+      - store_artifacts:
+          path: dist/reports/junit/
+
+      - store_test_results:
+          path: dist/reports/coverage/cobertura.xml
  
   deploy:
     working_directory: ~/ng-compiler
