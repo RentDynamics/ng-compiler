@@ -47,8 +47,11 @@ jobs:
 
       - run: yarn test
 
+      - store_test_results:
+          path: dist/reports/junit/TESTS.xml
+
       - store_artifacts:
-          path: coverage
+          path: dist/reports/coverage
           prefix: coverage
  
   deploy:

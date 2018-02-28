@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     basePath: require('path').join(__dirname, './'),
     frameworks: ['jasmine'],
@@ -12,7 +12,7 @@ module.exports = function(config) {
       require('karma-phantomjs-launcher'),
       // require('karma-remap-istanbul'),
       require('karma-coverage'),
-      require('karma-remap-coverage')
+      require('karma-junit-reporter')
     ],
 
     // Proxied base paths for loading assets
@@ -23,26 +23,26 @@ module.exports = function(config) {
     },
 
     files: [
-      {pattern: 'node_modules/core-js/client/core.js', included: true, watched: false},
+      { pattern: 'node_modules/core-js/client/core.js', included: true, watched: false },
       //{pattern: 'node_modules/es6-shim/es6-shim.js', included: true, watched: false},
-      {pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: true, watched: false},
-      {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: false},
-      {pattern: 'node_modules/zone.js/dist/zone.js', included: true, watched: false},
-      {pattern: 'node_modules/zone.js/dist/proxy.js', included: true, watched: false},
-      {pattern: 'node_modules/zone.js/dist/sync-test.js', included: true, watched: false},
-      {pattern: 'node_modules/zone.js/dist/jasmine-patch.js', included: true, watched: false},
-      {pattern: 'node_modules/zone.js/dist/async-test.js', included: true, watched: false},
-      {pattern: 'node_modules/zone.js/dist/fake-async-test.js', included: true, watched: false},
+      { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: true, watched: false },
+      { pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: false },
+      { pattern: 'node_modules/zone.js/dist/zone.js', included: true, watched: false },
+      { pattern: 'node_modules/zone.js/dist/proxy.js', included: true, watched: false },
+      { pattern: 'node_modules/zone.js/dist/sync-test.js', included: true, watched: false },
+      { pattern: 'node_modules/zone.js/dist/jasmine-patch.js', included: true, watched: false },
+      { pattern: 'node_modules/zone.js/dist/async-test.js', included: true, watched: false },
+      { pattern: 'node_modules/zone.js/dist/fake-async-test.js', included: true, watched: false },
 
       // GLOBALS
       { pattern: 'node_modules/moment/min/moment.min.js', watched: false },
       { pattern: 'node_modules/moment-range/dist/moment-range.min.js', watched: false },
 
       // Include all Angular dependencies
-      {pattern: 'node_modules/ckeditor/**/*', included: false, watched: false},
-      {pattern: 'node_modules/@angular/**/*', included: false, watched: false},
-      {pattern: 'node_modules/@rd/**/*', included: false, watched: false},
-      {pattern: 'node_modules/rxjs/**/*', included: false, watched: false},
+      { pattern: 'node_modules/ckeditor/**/*', included: false, watched: false },
+      { pattern: 'node_modules/@angular/**/*', included: false, watched: false },
+      { pattern: 'node_modules/@rd/**/*', included: false, watched: false },
+      { pattern: 'node_modules/rxjs/**/*', included: false, watched: false },
 
       // {pattern: 'node_modules/jquery/dist/jquery.min.js', included: true, watched: false},
       // {pattern: 'node_modules/fullcalendar/dist/fullcalendar.js', included: true, watched: false},
@@ -56,47 +56,56 @@ module.exports = function(config) {
 
       //'build/**/*.+(js|js.map|css|html)',
 
-      {pattern: 'dist/assets/auto-email-template.html', included: false, watched: true},
+      { pattern: 'dist/assets/auto-email-template.html', included: false, watched: true },
 
       // Includes all package tests and source files into karma. Those files will be watched.
       // This pattern also matches all all sourcemap files and TypeScript files for debugging.
       // {pattern: 'build/**/*', included: false, watched: true}, /* may be needed for sourcemaps */
-      {pattern: 'dist/lib/**', included: false, watched: true},
+      { pattern: 'dist/lib/**', included: false, watched: true },
     ],
 
     preprocessors: {
       'dist/lib/**/!(*spec).js': ['coverage']
-},
+    },
 
     // add both "karma-coverage" and "karma-remap-coverage" reporters
-reporters: ['progress', 'coverage', 'remap-coverage'],
+    reporters: ['progress', 'coverage', 'junit'],
 
-// save interim raw coverage report in memory
-coverageReporter: {
-  watermarks: {
-  statements: [ 50, 75 ],
-  functions: [ 50, 75 ],
-  branches: [ 50, 75 ],
-  lines: [ 50, 75 ]
-}
-},
+    // save interim raw coverage report in memory
+    coverageReporter: {
+      // specify a common output directory
+      dir: 'dist/reports/coverage',
+      reporters: [
+        // reporters not supporting the `file` property
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' },
+        // reporters supporting the `file` property, use `subdir` to directly
+        // output them in the `dir` directory
+        { type: 'cobertura', subdir: '.', file: 'cobertura.txt' },
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' },
+        { type: 'teamcity', subdir: '.', file: 'teamcity.txt' },
+        { type: 'text', subdir: '.', file: 'text.txt' },
+        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
+      ],
+      watermarks: {
+        statements: [50, 75],
+        functions: [50, 75],
+        branches: [50, 75],
+        lines: [50, 75]
+      }
+    },
 
-// define where to save final remaped coverage reports
-remapCoverageReporter: {
-  'text-summary': null,
-  html: './coverage/html',
-  cobertura: './coverage/cobertura.xml'
-},
-
-    // // reporters: ['progress', 'kjhtml'],
-    // reporters: ['progress', 'karma-remap-istanbul'],
-    //
-    // remapIstanbulReporter: {
-    //   reports: {
-    //     html: 'coverage',
-    //     lcovonly: './coverage/coverage.lcov'
-    //   }
-    // },
+    // the default configuration
+    junitReporter: {
+      outputDir: 'dist/reports/junit', // results will be saved as $outputDir/$browserName.xml
+      outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: '@rd/compiler', // suite will become the package name attribute in xml testsuite element
+      useBrowserName: false, // add browser name to report and classes names
+      nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
+      classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
+      properties: {}, // key value pair of properties to add to the <properties> section of the report
+      xmlVersion: null // use '1' if reporting to be per SonarQube 6.2 XML format
+    },
 
     customLaunchers: {
       "Chrome_1024x768": {
