@@ -9,7 +9,10 @@ module.exports = function(config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
-      require('karma-phantomjs-launcher')
+      require('karma-phantomjs-launcher'),
+      // require('karma-remap-istanbul'),
+      require('karma-coverage'),
+      require('karma-remap-coverage')
     ],
 
     // Proxied base paths for loading assets
@@ -61,7 +64,39 @@ module.exports = function(config) {
       {pattern: 'dist/lib/**', included: false, watched: true},
     ],
 
-    reporters: ['progress', 'kjhtml'],
+    preprocessors: {
+      'dist/lib/**/!(*spec).js': ['coverage']
+},
+
+    // add both "karma-coverage" and "karma-remap-coverage" reporters
+reporters: ['progress', 'coverage', 'remap-coverage'],
+
+// save interim raw coverage report in memory
+coverageReporter: {
+  watermarks: {
+  statements: [ 50, 75 ],
+  functions: [ 50, 75 ],
+  branches: [ 50, 75 ],
+  lines: [ 50, 75 ]
+}
+},
+
+// define where to save final remaped coverage reports
+remapCoverageReporter: {
+  'text-summary': null,
+  html: './coverage/html',
+  cobertura: './coverage/cobertura.xml'
+},
+
+    // // reporters: ['progress', 'kjhtml'],
+    // reporters: ['progress', 'karma-remap-istanbul'],
+    //
+    // remapIstanbulReporter: {
+    //   reports: {
+    //     html: 'coverage',
+    //     lcovonly: './coverage/coverage.lcov'
+    //   }
+    // },
 
     customLaunchers: {
       "Chrome_1024x768": {
@@ -73,7 +108,6 @@ module.exports = function(config) {
     },
 
     exclude: [],
-    preprocessors: {},
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

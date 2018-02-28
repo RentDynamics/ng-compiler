@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/template-compiler.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">lib/</a> template-compiler.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.02% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>44/53</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">58.54% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>24/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.62% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>11/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.96% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>40/46</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c &lt; 3 ? target : <span class="branch-1 cbranch-no" title="branch not covered" >desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,</span> d;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") <span class="cstat-no" title="statement not covered" >r = Reflect.decorate(decorators, target, key, desc);</span>
+    else for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="missing-if-branch" title="else path not taken" >E</span>if (d = decorators[i]) r = (c &lt; 3 ? d(r) : <span class="branch-1 cbranch-no" title="branch not covered" >c &gt; 3 ? d(target, key, r) : d(target, key))</span> || r;
+    return c &gt; 3 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >r </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >Object.defineProperty(target, key, r),</span> r;
+};
+var __metadata = (this &amp;&amp; this.__metadata) || function (k, v) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+(function (factory) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof module === "object" &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof module.exports === "object")</span> {
+<span class="cstat-no" title="statement not covered" >        var v = factory(require, exports);</span>
+<span class="cstat-no" title="statement not covered" >        if (v !== undefined) <span class="cstat-no" title="statement not covered" >module.exports = v;</span></span>
+    }
+    else <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof define === "function" &amp;&amp; define.amd) {
+        define(["require", "exports", "@angular/core", "@angular/http", "rxjs/Observable", "rxjs/add/operator/map", "./compiled-result.model", "./dynamic-type.builder"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var core_1 = require("@angular/core");
+    var http_1 = require("@angular/http");
+    var Observable_1 = require("rxjs/Observable");
+    require("rxjs/add/operator/map");
+    var compiled_result_model_1 = require("./compiled-result.model");
+    var dynamic_type_builder_1 = require("./dynamic-type.builder");
+    var TemplateCompiler = (function () {
+        // @ViewChild('dynamicContentPlaceHolder', { read: ViewContainerRef })
+        // protected dynamicComponentTarget: ViewContainerRef;
+        function TemplateCompiler(http, typeBuilder) {
+            this.http = http;
+            this.typeBuilder = typeBuilder;
+        }
+        TemplateCompiler.prototype.compile = function (url, model, target, additionalImports) {
+            var _this = this;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (model === void 0) { <span class="cstat-no" title="statement not covered" >model = {}; </span>}
+            return Observable_1.Observable.create(function (observer) {
+                var styles;
+                _this.http.get(url).map(function (response) { return response.text(); }).subscribe(function (result) {
+                    styles = result.match(/&lt;style(.+)?&gt;([\s\w\{\}\.\:\;]+)&lt;\/style&gt;/g);
+                    result = result.replace(/&lt;style(.+)?&gt;([\s\w\{\}\.\:\;]+)&lt;\/style&gt;/g, '');
+                    _this.typeBuilder.createComponentFactoryByTemplate(result, additionalImports).then(function (factory) {
+                        // Target will instantiate and inject component (we'll keep reference to it)
+                        _this.componentRef = target
+                            .createComponent(factory);
+                        // let's inject @Inputs to component instance
+                        var component = _this.componentRef.instance;
+                        component.model = model;
+                        _this.componentRef.changeDetectorRef.detectChanges();
+                        //let combinedStyles: string = styles.reduce((style) =&gt; style);
+                        observer.next(new compiled_result_model_1.CompiledResultModel(_this.componentRef, styles));
+                        observer.complete();
+                    }, <span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >                        observer.error(err);</span>
+<span class="cstat-no" title="statement not covered" >                        observer.complete();</span>
+                    });
+                }, <span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >                    observer.error(err);</span>
+<span class="cstat-no" title="statement not covered" >                    observer.complete();</span>
+                });
+            });
+        };
+        TemplateCompiler = __decorate([
+            core_1.Injectable(),
+            __metadata("design:paramtypes", [http_1.Http, dynamic_type_builder_1.DynamicTypeBuilder])
+        ], TemplateCompiler);
+        return TemplateCompiler;
+    }());
+    exports.TemplateCompiler = TemplateCompiler;
+});
+//# sourceMappingURL=template-compiler.js.map</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Feb 27 2018 20:01:37 GMT-0700 (MST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

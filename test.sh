@@ -7,7 +7,7 @@ NGC="node node_modules/.bin/ngc"
 TSC="node node_modules/.bin/tsc"
 
 # clean up previous distributions
-rm -rf ./dist ./build
+rm -rf ./build ./coverage ./dist
 
 # run gulp inline-templates
 $GULP inline-templates --gulpfile ./.gulpfile.js
