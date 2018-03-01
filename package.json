@@ -1,7 +1,7 @@
 {
   "name": "@rd/compiler",
   "version": "0.0.0-development",
-  "main": "bundles/compiler.umd.min.js",
+  "main": "bundles/compiler.umd.js",
   "repository": "https://github.com/RentDynamics/ng-compiler",
   "typings": "public_api.d.ts",
   "private": false,
