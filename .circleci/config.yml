@@ -59,4 +59,4 @@ deployment:
     branch: master
     # owner: circleci ## todo: figure out correct owner to put here
     commands:
-      - run: yarn semantic-release || true
+      - yarn semantic-release || true
