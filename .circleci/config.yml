@@ -43,11 +43,13 @@ jobs:
           path: dist/reports/junit
 
       - deploy:
+          name: yarn build
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               yarn build
             fi
       - deploy:
+          name: yarn semantic-release
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               yarn semantic-release
