@@ -3,31 +3,17 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
-
-general:
-  branches:
-    only:
-      - master # list of branches to build
-      - dev
-  # artifacts:
-  #   - "coverage" # relative to the build directory
-
 jobs:
-  build:
+  test:
+    working_directory: ~/ng-compiler
+    # The primary container is an instance of the first list image listed. Your build commands run in this container.
     docker:
       # specify the version you desire here
       - image: circleci/node:9.3.0
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/ng-compiler
-
+      # # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
+      #   - image: mongo:3.4.4
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -42,21 +28,46 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
       - run: yarn test
+
       - store_artifacts:
           path: dist/reports/coverage
+
       - store_artifacts:
           path: dist/reports/junit
+
       - store_test_results:
           path: dist/reports/junit
 
-      # run build
-      - run: yarn build
+      - persist_to_workspace:
+          root: ~/ng-compiler
+          paths:
+            - node_modules
+            - yarn.lock
 
-deployment:
-  master:
-    branch: master
-    # owner: circleci ## todo: figure out correct owner to put here
-    commands:
-      - yarn semantic-release || true
+  deploy:
+    working_directory: ~/ng-compiler
+    docker:
+      - image: circleci/node:9.3.0
+      # - image: mongo:3.4.4
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/ng-compiler
+
+      - run: yarn build
+      - run: yarn semantic-release || true
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
