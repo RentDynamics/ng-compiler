@@ -91,7 +91,7 @@ module.exports = function (config) {
         global: {
           statements: 50,
           branches: 50,
-          functions: 50,
+          functions: 48,
           lines: 50,
           excludes: [
             'foo/bar/**/*.js'
