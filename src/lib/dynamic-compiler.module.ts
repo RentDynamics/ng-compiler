@@ -20,10 +20,4 @@ import { FormsModule } from "@angular/forms";
 })
 export class DynamicCompilerModule {
 
-    static forRoot() {
-        return {
-            ngModule: DynamicCompilerModule,
-            providers: [], // not used here, but if singleton needed
-        };
-    }
 }
