@@ -17,6 +17,7 @@
     "build": "./build.sh",
     "commit": "git-cz",
     "test": "./test.sh --single-run true",
+    "posttest": "npx codecov -f dist/reports/coverage/* -t 20313593-a0bf-427a-8b30-a0b67bd05189",
     "prepush": "npm test",
     "semantic-release": "cd ./dist && semantic-release"
   },
@@ -57,6 +58,7 @@
     "bootstrap": "^4.0.0",
     "camelcase": "^4.1.0",
     "canonical-path": "0.0.2",
+    "codecov": "^3.0.0",
     "commitizen": "2.9.6",
     "concurrently": "3.5.0",
     "core-js": "2.5.2",
