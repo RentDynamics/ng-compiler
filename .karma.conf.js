@@ -57,6 +57,7 @@ module.exports = function (config) {
       //'build/**/*.+(js|js.map|css|html)',
 
       { pattern: 'dist/assets/auto-email-template.html', included: false, watched: true },
+      { pattern: 'dist/assets/complex-style-tag.html', included: false, watched: true },
 
       // Includes all package tests and source files into karma. Those files will be watched.
       // This pattern also matches all all sourcemap files and TypeScript files for debugging.

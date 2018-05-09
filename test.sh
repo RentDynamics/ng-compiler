@@ -18,6 +18,7 @@ $TSC -p ./tsconfig-spec.json
 # copy assets to ./dist directory for testing purposes
 mkdir ./dist/assets/
 cp ./src/assets/auto-email-template.html ./dist/assets/auto-email-template.html
+cp ./src/assets/complex-style-tag.html ./dist/assets/complex-style-tag.html
 
 # start karma
 $KARMA start ./.karma.conf.js $1 $2 $3 $4 $5 $6 $7 $8 $9
