@@ -1,9 +1,9 @@
 import { ComponentFactory, ComponentRef, Injectable, ViewChild, ViewContainerRef, ViewRef, EmbeddedViewRef } from '@angular/core';
 import { CompilerConfig, AotCompiler, JitCompiler, templateJitUrl, ngModuleJitUrl, sharedStylesheetJitUrl, splitClasses, splitNsName, createAotCompiler, createAotUrlResolver, core } from '@angular/compiler';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import 'rxjs/add/operator/map';
+import { Observable, Observer } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 import { CompiledResultModel } from './compiled-result.model';
 import { Compiler } from './compiler';
@@ -25,7 +25,7 @@ export class TemplateCompiler implements Compiler {
         return Observable.create((observer: Observer<any>) => {
             let styles: string[];
 
-            this.http.get(url).map(response => response.text()).subscribe(result => {
+            this.http.get(url).pipe(map((response: any) => response.text())).subscribe(result => {
                 styles = result.match(/<style(.+)?>([\s\w\{\}\.\:\;]+)<\/style>/g);
                 result = result.replace(/<style(.+)?>([\s\w\{\}\.\:\;]+)<\/style>/g, '');
 
