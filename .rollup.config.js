@@ -16,7 +16,7 @@ var config = {
         '@angular/http',
         '@angular/compiler',
 
-        'rxjs/Rx'
+        'rxjs'
     ],
     output: {
         name: moduleName,
@@ -35,7 +35,7 @@ var config = {
             '@angular/compiler': 'ng.compiler',
 
             'moment': 'moment',
-            'rxjs/Rx': 'rxjs.Rx',
+            'rxjs': 'rxjs',
         },
         // banner: '/* my-library version ' + libraryVersion + ' */',
         // footer: '/* follow me on Twitter! @rich_harris */'
