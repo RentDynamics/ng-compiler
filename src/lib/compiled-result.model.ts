@@ -15,7 +15,7 @@ export class CompiledResultModel {
     get styles(): string {
         if(!this.styleTags || !this.styleTags.length)
             return '';
-        return this.styleTags.reduce((style) => style);
+        return this.styleTags.join('');
     }
 
     constructor(public componentRef: ComponentRef<DynamicComponent>, private styleTags: string[]){
