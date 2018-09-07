@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "core": {
+    "compiler": {
       "root": ".",
       "sourceRoot": "./src",
       "projectType": "library",
@@ -46,5 +46,5 @@
       }
     }
   },
-  "defaultProject": "core"
+  "defaultProject": "compiler"
 }
