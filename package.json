@@ -20,7 +20,7 @@
     "commit": "git-cz",
     "test": "ng t --code-coverage --watch false",
     "prepush": "npm test",
-    "semantic-release": "cd ./dist/core && semantic-release"
+    "semantic-release": "cd ./dist/compiler && semantic-release"
   },
   "readme": "README.md",
   "config": {
