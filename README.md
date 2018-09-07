@@ -32,6 +32,10 @@ Don't forget to expose any new additions publically, ensure everything is access
 [dev-dependency-link]: https://david-dm.org/RentDynamics/ng-compiler?type=dev
 [peer-dependency-image]: https://david-dm.org/RentDynamics/ng-compiler/peer-status.svg
 [peer-dependency-link]: https://david-dm.org/RentDynamics/ng-compiler?type=peer
+[public-true-image]: https://img.shields.io/badge/public-true-yellow.svg
+[public-true-link]: https://img.shields.io/badge/public-true-yellow.svg
+[private-true-image]: https://img.shields.io/badge/private-true-green.svg
+[private-true-link]: https://img.shields.io/badge/private-true-green.svg
 [npm-version-image]: https://img.shields.io/npm/v/@rd/compiler.svg
 [npm-version-link]: https://www.npmjs.com/package/@rd/compiler
 [npm-downloads-image]: https://img.shields.io/npm/dm/@rd/compiler.svg
