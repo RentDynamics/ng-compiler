@@ -9,7 +9,13 @@
 [![NPM Version][npm-version-image]][npm-version-link]
 [![MIT License][npm-license-image]][npm-license-link]
 
-## @rd/compiler
+## @rd/compiler [![Public or Private Repo][public-true-image]][public-true-link]
+
+todo: documentation...
+
+In order to release this package automatically, you must format the commit message properly so that when it is merged into master, it will semantically release the new changes based on commit msg type and previously tagged version
+
+Don't forget to expose any new additions publically, ensure everything is accessible via the public_api.ts
 
 
 [npm-icon]: https://nodei.co/npm/@rd/compiler.svg?downloads=true
