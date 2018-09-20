@@ -17,6 +17,8 @@ module.exports = function (config) {
     files: [
       require('path').join(__dirname, './node_modules/jssha/src/sha.js'),
       require('path').join(__dirname, '../../node_modules/jssha/src/sha.js'),
+      require('path').join(__dirname, './src/assets/auto-email-template.html'),
+      require('path').join(__dirname, './src/assets/complex-style-tag.html')
     ],
     client: {
       args: config.grep ? ['--grep', config.grep] : [],
