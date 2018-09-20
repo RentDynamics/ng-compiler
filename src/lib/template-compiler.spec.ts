@@ -49,13 +49,13 @@ describe('Service: TemplateCompiler', () => {
   }));
 
   it('should compile template ', inject([TemplateCompiler], (templateCompiler: TemplateCompiler) => {
-    templateCompiler.compile('/base/dist/assets/auto-email-template.html', { id: 291, firstName: 'chase', lastName: 'gibbs' }, component.divViewContainerRef, []).subscribe((result: CompiledResultModel) => {
+    templateCompiler.compile('/assets/auto-email-template.html', { id: 291, firstName: 'chase', lastName: 'gibbs' }, component.divViewContainerRef, []).subscribe((result: CompiledResultModel) => {
       expect(result.styles).toEqual(`<style>\n\n</style><style id="styleId">\n	.className {\n		height: 10px;\n	}\n</style>`);
     });
   }));
 
   it('should compile more complex template ', inject([TemplateCompiler], (templateCompiler: TemplateCompiler) => {
-    templateCompiler.compile('/base/dist/assets/complex-style-tag.html', { val: 'World' }, component.divViewContainerRef, []).subscribe((result: CompiledResultModel) => {
+    templateCompiler.compile('/assets/complex-style-tag.html', { val: 'World' }, component.divViewContainerRef, []).subscribe((result: CompiledResultModel) => {
       expect(result.styles).toBeDefined();
       expect(result.styles.substring(0, 30)).toEqual('<style type="text/css" scoped>');
       expect(result.outerHTML).toBeDefined();
