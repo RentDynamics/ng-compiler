@@ -1,7 +1,6 @@
 
 [![Circle CI Badge][circleci-badge]][circleci-link]
 [![codecov][codecov-image]][codecov-link]
-[![NSP Status][nsp-image]][nsp-link]
 [![Dependency Status][dependency-image]][dependency-link]
 [![Dev Dependency Status][dev-dependency-image]][dev-dependency-link]
 [![Peer Dependency Status][peer-dependency-image]][peer-dependency-link]
@@ -11,12 +10,10 @@
 
 ## @rd/compiler [![Public or Private Repo][public-true-image]][public-true-link]
 
-[![Build Status](https://travis-ci.org/ng2select/bootstrap.svg?branch=master)](https://travis-ci.org/ng2select/bootstrap)
 
-#### this module contains custom angular2+ compilation tools.
-it is useful when you need to compile an angular2+ template file into its respective html using a simple data model
+#### this module contains custom angular2+ compilation providers
+it is useful when you need to compile an angular2+ template file into its respective html while using a simple data model, similar to $ngCompiler in angular.js
 
-<iframe src="http://embed.plnkr.co/GeHGKI/?show=preview" frameborder="0" width="100%" height="500"></iframe>
 
 ## installation
 ```
@@ -24,7 +21,9 @@ npm install @rd/compiler --save
 
 ```
 
-## Angular2TemplateCompiler
+## examples
+
+### TemplateCompiler
 
 ```TypeScript
 
@@ -48,15 +47,21 @@ export class TemplateCompilerExampleComponent {
 }
 ```
 
+## contributing
+
+please make any changes on a feature branch and create a pull-request for review, in order to contribute to this package
+
+in order to release this package automatically, you must format the commit message properly so that when it is merged into master, it will semantically release the new changes based on commit msg type and previously tagged version (by running `npm run commit` instead of `git commit`, it will run a interactive command-line utility which will ultimately format the commit messages properly for you)
+
+don't forget to expose any new additions publically, ensure everything which is public is accessible via the public_api.ts
+
+## plnkr
+
+<iframe src="https://embed.plnkr.co/GeHGKI/?show=preview" frameborder="0" width="100%" height="500"></iframe>
+
 _powered by:_
 https://rentdynamics.com +
 https://angular.io
-
-## release
-
-In order to release this package automatically, you must format the commit message properly so that when it is merged into master, it will semantically release the new changes based on commit msg type and previously tagged version
-
-Don't forget to expose any new additions publically, ensure everything is accessible via the public_api.ts
 
 
 [npm-icon]: https://nodei.co/npm/@rd/compiler.svg?downloads=true
