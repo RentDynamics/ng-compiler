@@ -11,7 +11,48 @@
 
 ## @rd/compiler [![Public or Private Repo][public-true-image]][public-true-link]
 
-todo: documentation...
+[![Build Status](https://travis-ci.org/ng2select/bootstrap.svg?branch=master)](https://travis-ci.org/ng2select/bootstrap)
+
+#### this module contains custom angular2+ compilation tools.
+it is useful when you need to compile an angular2+ template file into its respective html using a simple data model
+
+<iframe src="http://embed.plnkr.co/GeHGKI/?show=preview" frameborder="0" width="100%" height="500"></iframe>
+
+## installation
+```
+npm install @rd/compiler --save
+
+```
+
+## Angular2TemplateCompiler
+
+```TypeScript
+
+@Component({
+  template:
+    `<div #divViewContainerRef></div>`
+})
+export class TemplateCompilerExampleComponent {
+  @ViewChild('divViewContainerRef', { read: ViewContainerRef }) divViewContainerRef: ViewContainerRef;
+
+  compiledHtml: string;
+
+  constructor(public templateCompiler: TemplateCompiler) { }
+
+  ngOnInit(){
+    this.templateCompiler.compile('/src/assets/auto-email-template.html', { id: 291, firstName: 'chase', lastName: 'gibbs' }, this.divViewContainerRef, [SharedModule]).subscribe((compiledResult: CompiledResultModel) => {
+        this.compiledHtml = compiledResult.styles + compiledResult.outerHTML;
+    });
+  }
+
+}
+```
+
+_powered by:_
+https://rentdynamics.com +
+https://angular.io
+
+## release
 
 In order to release this package automatically, you must format the commit message properly so that when it is merged into master, it will semantically release the new changes based on commit msg type and previously tagged version
 
