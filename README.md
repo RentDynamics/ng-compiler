@@ -11,8 +11,8 @@
 ## @rd/compiler [![Public or Private Repo][public-true-image]][public-true-link]
 
 
-#### this module contains custom angular2+ compilation providers
-it is useful when you need to compile an angular2+ template file into its respective html while using a simple data model, similar to $ngCompiler in angular.js
+#### this module contains a simple easy to use angular2+ template compiler
+it is useful when you need to compile any angular2+ template file directly to html, passing in a view model as a parameter, similar to $ngCompiler in angular.js!!
 
 
 ## installation
@@ -21,7 +21,7 @@ npm install @rd/compiler --save
 
 ```
 
-## examples
+## example(s)
 
 ### TemplateCompiler
 
@@ -69,21 +69,20 @@ export class TemplateCompilerExampleComponent {
 
 ## contributing
 
-please make any changes on a feature branch and create a pull-request for review, in order to contribute to this package
+in order to contribute to this package, please make any changes on your own feature branch and create a pull-request for review (see below for more info)
 
 in order to release this package automatically, you must format the commit message properly so that when it is merged into master, it will semantically release the new changes based on commit msg type and previously tagged version (by running `npm run commit` instead of `git commit`, it will run a interactive command-line utility which will ultimately format the commit messages properly for you)
 
 don't forget to expose any new additions publically, ensure everything which is public is accessible via the public_api.ts
 
-## plnkr
+[Code review guidelines for this project](CODE_REVIEWS.md)
 
-<iframe src="https://embed.plnkr.co/GeHGKI/?show=preview" frameborder="0" width="100%" height="500"></iframe>
+[Coding standards for this project](CODING_STANDARDS.md)
 
-_powered by:_
-https://rentdynamics.com +
-https://angular.io
+[Contribution guidelines for this project](CONTRIBUTING.md)
 
 
+[code-reviews-link]: /CODE_REVIEWS.md
 [npm-icon]: https://nodei.co/npm/@rd/compiler.svg?downloads=true
 [npm-icon-link]: https://npmjs.org/package/@rd/compiler
 [circleci-badge]: https://circleci.com/gh/RentDynamics/ng-compiler.svg?style=shield
