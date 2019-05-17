@@ -73,13 +73,13 @@ In order to contribute to this package, please make any changes on your own feat
 
 In order to release this package automatically, you must format the commit message properly so that when it is merged into master, it will semantically release the new changes based on commit msg type and previously tagged version. (by running `npm run commit` instead of `git commit`, it will run a interactive command-line utility which will ultimately format the commit messages properly for you)
 
-Don't forget to expose any new additions publically, ensure everything which is public is accessible via the public_api.ts
+Don't forget to expose any new additions publicly, ensure everything which is public is accessible via the public_api.ts
 
-[Code review guidelines for this project](CODE_REVIEWS.md)
+[-> Code review guidelines for this project](CODE_REVIEWS.md)
 
-[Coding standards for this project](CODING_STANDARDS.md)
+[-> Coding standards for this project](CODING_STANDARDS.md)
 
-[Contribution guidelines for this project](CONTRIBUTING.md)
+[-> Contribution guidelines for this project](CONTRIBUTING.md)
 
 _powered by:_
 https://rentdynamics.com +
